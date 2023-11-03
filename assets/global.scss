@@ -1,0 +1,25 @@
+:root {
+  --background-color: #252529;
+  --font-color: #fff;
+  --border-color: #424242;
+  --button-color: #7550f1;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  background-color: var(--background-color);
+  line-height: normal;
+  color: var(--font-color);
+}
+
+body {
+  word-break: break-word;
+  overflow-y: scroll;
+  -webkit-font-smoothing: unset !important;
+  font-family: -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell,
+    Noto Sans, sans-serif, BlinkMacSystemFont, Helvetica Neue, PingFang SC,
+    Hiragino Sans GB, Microsoft YaHei, Arial !important;
+}

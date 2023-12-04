@@ -11,7 +11,7 @@ defineEmits(['update:modelValue'])
       <div class="search-icon"></div>
       <input
         class="input_area"
-        placeholder="Search architecture information"
+        placeholder="Analyze code ( e.g. https://github.com/torvalds/linux.git[master] )"
         type="text"
         :value="modelValue"
         @input="

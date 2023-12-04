@@ -1,5 +1,5 @@
 :root {
-  --background-color: #252529;
+  --background-color: #0e1116;
   --font-color: #fff;
   --border-color: #424242;
   --button-color: #7550f1;
@@ -12,6 +12,11 @@ body {
   font-size: 12px;
   background-color: var(--background-color);
   line-height: normal;
+  color: var(--font-color);
+}
+
+a {
+  text-decoration: none;
   color: var(--font-color);
 }
 

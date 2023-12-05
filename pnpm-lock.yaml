@@ -4,19 +4,30 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+dependencies:
+  diff2html:
+    specifier: ^3.4.45
+    version: registry.npmmirror.com/diff2html@3.4.45
+  highlight.js:
+    specifier: ^11.9.0
+    version: registry.npmmirror.com/highlight.js@11.9.0
+
 devDependencies:
   '@nuxt/devtools':
     specifier: latest
     version: registry.npmmirror.com/@nuxt/devtools@1.0.0-beta.1(nuxt@3.8.0)(vite@4.5.0)
   nuxt:
     specifier: ^3.8.0
-    version: registry.npmmirror.com/nuxt@3.8.0(sass@1.69.5)(vite@4.5.0)
+    version: registry.npmmirror.com/nuxt@3.8.0(sass@1.69.5)(typescript@5.3.2)(vite@4.5.0)
   sass:
     specifier: ^1.69.5
     version: registry.npmmirror.com/sass@1.69.5
+  typescript:
+    specifier: ^5.3.2
+    version: registry.npmmirror.com/typescript@5.3.2
   vue:
     specifier: ^3.3.7
-    version: registry.npmmirror.com/vue@3.3.7
+    version: registry.npmmirror.com/vue@3.3.7(typescript@5.3.2)
   vue-router:
     specifier: ^4.2.5
     version: registry.npmmirror.com/vue-router@4.2.5(vue@3.3.7)
@@ -1216,7 +1227,7 @@ packages:
       '@nuxt/kit': registry.npmmirror.com/@nuxt/kit@3.8.0
       '@nuxt/schema': registry.npmmirror.com/@nuxt/schema@3.8.0
       execa: registry.npmmirror.com/execa@7.2.0
-      nuxt: registry.npmmirror.com/nuxt@3.8.0(sass@1.69.5)(vite@4.5.0)
+      nuxt: registry.npmmirror.com/nuxt@3.8.0(sass@1.69.5)(typescript@5.3.2)(vite@4.5.0)
       vite: registry.npmmirror.com/vite@4.5.0(sass@1.69.5)
     transitivePeerDependencies:
       - rollup
@@ -1235,7 +1246,7 @@ packages:
       '@nuxt/kit': registry.npmmirror.com/@nuxt/kit@3.8.0
       '@nuxt/schema': registry.npmmirror.com/@nuxt/schema@3.8.0
       execa: registry.npmmirror.com/execa@7.2.0
-      nuxt: registry.npmmirror.com/nuxt@3.8.0(sass@1.69.5)(vite@4.5.0)
+      nuxt: registry.npmmirror.com/nuxt@3.8.0(sass@1.69.5)(typescript@5.3.2)(vite@4.5.0)
       vite: registry.npmmirror.com/vite@4.5.0(sass@1.69.5)
     transitivePeerDependencies:
       - rollup
@@ -1309,7 +1320,7 @@ packages:
       local-pkg: registry.npmmirror.com/local-pkg@0.5.0
       magicast: registry.npmmirror.com/magicast@0.3.0
       nitropack: registry.npmmirror.com/nitropack@2.7.2
-      nuxt: registry.npmmirror.com/nuxt@3.8.0(sass@1.69.5)(vite@4.5.0)
+      nuxt: registry.npmmirror.com/nuxt@3.8.0(sass@1.69.5)(typescript@5.3.2)(vite@4.5.0)
       nypm: registry.npmmirror.com/nypm@0.3.3
       ofetch: registry.npmmirror.com/ofetch@1.3.3
       ohash: registry.npmmirror.com/ohash@1.1.3
@@ -1380,7 +1391,7 @@ packages:
       local-pkg: registry.npmmirror.com/local-pkg@0.5.0
       magicast: registry.npmmirror.com/magicast@0.3.0
       nitropack: registry.npmmirror.com/nitropack@2.7.2
-      nuxt: registry.npmmirror.com/nuxt@3.8.0(sass@1.69.5)(vite@4.5.0)
+      nuxt: registry.npmmirror.com/nuxt@3.8.0(sass@1.69.5)(typescript@5.3.2)(vite@4.5.0)
       nypm: registry.npmmirror.com/nypm@0.3.3
       ofetch: registry.npmmirror.com/ofetch@1.3.3
       ohash: registry.npmmirror.com/ohash@1.1.3
@@ -1505,7 +1516,7 @@ packages:
     version: 1.3.1
     dev: true
 
-  registry.npmmirror.com/@nuxt/vite-builder@3.8.0(sass@1.69.5)(vue@3.3.7):
+  registry.npmmirror.com/@nuxt/vite-builder@3.8.0(sass@1.69.5)(typescript@5.3.2)(vue@3.3.7):
     resolution: {integrity: sha512-F9BfH+c/Idp6sBGVHR4QJSuoO42evtE4D0OelD45NgkqVvmBmOawlj0Oz5fDKoV64LDPI2+yE+xnBdQtsNv/VA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@nuxt/vite-builder/-/vite-builder-3.8.0.tgz}
     id: registry.npmmirror.com/@nuxt/vite-builder/3.8.0
     name: '@nuxt/vite-builder'
@@ -1547,8 +1558,8 @@ packages:
       unplugin: registry.npmmirror.com/unplugin@1.5.0
       vite: registry.npmmirror.com/vite@4.5.0(sass@1.69.5)
       vite-node: registry.npmmirror.com/vite-node@0.33.0(sass@1.69.5)
-      vite-plugin-checker: registry.npmmirror.com/vite-plugin-checker@0.6.2(vite@4.5.0)
-      vue: registry.npmmirror.com/vue@3.3.7
+      vite-plugin-checker: registry.npmmirror.com/vite-plugin-checker@0.6.2(typescript@5.3.2)(vite@4.5.0)
+      vue: registry.npmmirror.com/vue@3.3.7(typescript@5.3.2)
       vue-bundle-renderer: registry.npmmirror.com/vue-bundle-renderer@2.0.0
     transitivePeerDependencies:
       - '@types/node'
@@ -2071,7 +2082,7 @@ packages:
       '@unhead/shared': registry.npmmirror.com/@unhead/shared@1.8.2
       hookable: registry.npmmirror.com/hookable@5.5.3
       unhead: registry.npmmirror.com/unhead@1.8.2
-      vue: registry.npmmirror.com/vue@3.3.7
+      vue: registry.npmmirror.com/vue@3.3.7(typescript@5.3.2)
     dev: true
 
   registry.npmmirror.com/@vercel/nft@0.24.3:
@@ -2111,7 +2122,7 @@ packages:
       '@babel/plugin-transform-typescript': registry.npmmirror.com/@babel/plugin-transform-typescript@7.22.15(@babel/core@7.23.2)
       '@vue/babel-plugin-jsx': registry.npmmirror.com/@vue/babel-plugin-jsx@1.1.5(@babel/core@7.23.2)
       vite: registry.npmmirror.com/vite@4.5.0(sass@1.69.5)
-      vue: registry.npmmirror.com/vue@3.3.7
+      vue: registry.npmmirror.com/vue@3.3.7(typescript@5.3.2)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2127,7 +2138,7 @@ packages:
       vue: ^3.2.25
     dependencies:
       vite: registry.npmmirror.com/vite@4.5.0(sass@1.69.5)
-      vue: registry.npmmirror.com/vue@3.3.7
+      vue: registry.npmmirror.com/vue@3.3.7(typescript@5.3.2)
     dev: true
 
   registry.npmmirror.com/@vue-macros/common@1.8.0(vue@3.3.7):
@@ -2148,7 +2159,7 @@ packages:
       ast-kit: registry.npmmirror.com/ast-kit@0.11.2
       local-pkg: registry.npmmirror.com/local-pkg@0.4.3
       magic-string-ast: registry.npmmirror.com/magic-string-ast@0.3.0
-      vue: registry.npmmirror.com/vue@3.3.7
+      vue: registry.npmmirror.com/vue@3.3.7(typescript@5.3.2)
     transitivePeerDependencies:
       - rollup
     dev: true
@@ -2282,7 +2293,7 @@ packages:
     dependencies:
       '@vue/compiler-ssr': registry.npmmirror.com/@vue/compiler-ssr@3.3.7
       '@vue/shared': registry.npmmirror.com/@vue/shared@3.3.7
-      vue: registry.npmmirror.com/vue@3.3.7
+      vue: registry.npmmirror.com/vue@3.3.7(typescript@5.3.2)
     dev: true
 
   registry.npmmirror.com/@vue/shared@3.3.7:
@@ -2295,7 +2306,6 @@ packages:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/abbrev/-/abbrev-1.1.1.tgz}
     name: abbrev
     version: 1.1.1
-    dev: true
 
   registry.npmmirror.com/abbrev@2.0.0:
     resolution: {integrity: sha512-6/mh1E2u2YgEsCHdY0Yx5oW+61gZU+1vXaoiHHrpKeuRNNgFvS+/jrwHiQhB5apAf5oB7UB7E19ol2R2LKH8hQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/abbrev/-/abbrev-2.0.0.tgz}
@@ -3288,12 +3298,23 @@ packages:
     version: 4.3.2
     dev: true
 
+  registry.npmmirror.com/diff2html@3.4.45:
+    resolution: {integrity: sha512-1SxsjYZYbxX0GGMYJJM7gM0SpMSHqzvvG0UJVROCDpz4tylH2T+EGiinm2boDmTrMlLueVxGfKNxGNLZ9zDlkQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/diff2html/-/diff2html-3.4.45.tgz}
+    name: diff2html
+    version: 3.4.45
+    engines: {node: '>=12'}
+    dependencies:
+      diff: registry.npmmirror.com/diff@5.1.0
+      hogan.js: registry.npmmirror.com/hogan.js@3.0.2
+    optionalDependencies:
+      highlight.js: registry.npmmirror.com/highlight.js@11.8.0
+    dev: false
+
   registry.npmmirror.com/diff@5.1.0:
     resolution: {integrity: sha512-D+mk+qE8VC/PAUrlAU34N+VfXev0ghe5ywmpqrawphmVZc1bEfn56uo9qpyGp1p4xpzOHkSW4ztBd6L7Xx4ACw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/diff/-/diff-5.1.0.tgz}
     name: diff
     version: 5.1.0
     engines: {node: '>=0.3.1'}
-    dev: true
 
   registry.npmmirror.com/dir-glob@3.0.1:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/dir-glob/-/dir-glob-3.0.1.tgz}
@@ -4007,6 +4028,32 @@ packages:
     dependencies:
       function-bind: registry.npmmirror.com/function-bind@1.1.2
     dev: true
+
+  registry.npmmirror.com/highlight.js@11.8.0:
+    resolution: {integrity: sha512-MedQhoqVdr0U6SSnWPzfiadUcDHfN/Wzq25AkXiQv9oiOO/sG0S7XkvpFIqWBl9Yq1UYyYOOVORs5UW2XlPyzg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/highlight.js/-/highlight.js-11.8.0.tgz}
+    name: highlight.js
+    version: 11.8.0
+    engines: {node: '>=12.0.0'}
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  registry.npmmirror.com/highlight.js@11.9.0:
+    resolution: {integrity: sha512-fJ7cW7fQGCYAkgv4CPfwFHrfd/cLS4Hau96JuJ+ZTOWhjnhoeN1ub1tFmALm/+lW5z4WCAuAV9bm05AP0mS6Gw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/highlight.js/-/highlight.js-11.9.0.tgz}
+    name: highlight.js
+    version: 11.9.0
+    engines: {node: '>=12.0.0'}
+    dev: false
+
+  registry.npmmirror.com/hogan.js@3.0.2:
+    resolution: {integrity: sha512-RqGs4wavGYJWE07t35JQccByczmNUXQT0E12ZYV1VKYu5UiAU9lsos/yBAcf840+zrUQQxgVduCR5/B8nNtibg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/hogan.js/-/hogan.js-3.0.2.tgz}
+    name: hogan.js
+    version: 3.0.2
+    hasBin: true
+    dependencies:
+      mkdirp: registry.npmmirror.com/mkdirp@0.3.0
+      nopt: registry.npmmirror.com/nopt@1.0.10
+    dev: false
 
   registry.npmmirror.com/hookable@5.5.3:
     resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/hookable/-/hookable-5.5.3.tgz}
@@ -4918,6 +4965,13 @@ packages:
       yallist: registry.npmmirror.com/yallist@4.0.0
     dev: true
 
+  registry.npmmirror.com/mkdirp@0.3.0:
+    resolution: {integrity: sha512-OHsdUcVAQ6pOtg5JYWpCBo9W/GySVuwvP9hueRMW7UqshC0tbfzLv8wjySTPm3tfUZ/21CE9E1pJagOA91Pxew==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/mkdirp/-/mkdirp-0.3.0.tgz}
+    name: mkdirp
+    version: 0.3.0
+    deprecated: Legacy versions of mkdirp are no longer supported. Please update to mkdirp 1.x. (Note that the API surface has changed to use Promises in 1.x.)
+    dev: false
+
   registry.npmmirror.com/mkdirp@1.0.4:
     resolution: {integrity: sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/mkdirp/-/mkdirp-1.0.4.tgz}
     name: mkdirp
@@ -5156,6 +5210,15 @@ packages:
     version: 2.0.13
     dev: true
 
+  registry.npmmirror.com/nopt@1.0.10:
+    resolution: {integrity: sha512-NWmpvLSqUrgrAC9HCuxEvb+PSloHpqVu+FqcO4eeF2h5qYRhA7ev6KvelyQAKtegUbC6RypJnlEOhd8vloNKYg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/nopt/-/nopt-1.0.10.tgz}
+    name: nopt
+    version: 1.0.10
+    hasBin: true
+    dependencies:
+      abbrev: registry.npmmirror.com/abbrev@1.1.1
+    dev: false
+
   registry.npmmirror.com/nopt@5.0.0:
     resolution: {integrity: sha512-Tbj67rffqceeLpcRXrT7vKAN8CwfPeIBgM7E6iBkmKLV7bEMwpGgYLGv0jACUsECaa/vuxP0IjEont6umdMgtQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/nopt/-/nopt-5.0.0.tgz}
     name: nopt
@@ -5324,7 +5387,7 @@ packages:
       fsevents: registry.npmmirror.com/fsevents@2.3.3
     dev: true
 
-  registry.npmmirror.com/nuxt@3.8.0(sass@1.69.5)(vite@4.5.0):
+  registry.npmmirror.com/nuxt@3.8.0(sass@1.69.5)(typescript@5.3.2)(vite@4.5.0):
     resolution: {integrity: sha512-ZnisJYx5AcUl7xlw18m6zfINBpNhld+ZF+jdTLRZxkLjKSFZeFMGqKxOR1jNVSmxfIXM/guK0uV9GPm6HK/z7g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/nuxt/-/nuxt-3.8.0.tgz}
     id: registry.npmmirror.com/nuxt/3.8.0
     name: nuxt
@@ -5346,7 +5409,7 @@ packages:
       '@nuxt/schema': registry.npmmirror.com/@nuxt/schema@3.8.0
       '@nuxt/telemetry': registry.npmmirror.com/@nuxt/telemetry@2.5.2
       '@nuxt/ui-templates': registry.npmmirror.com/@nuxt/ui-templates@1.3.1
-      '@nuxt/vite-builder': registry.npmmirror.com/@nuxt/vite-builder@3.8.0(sass@1.69.5)(vue@3.3.7)
+      '@nuxt/vite-builder': registry.npmmirror.com/@nuxt/vite-builder@3.8.0(sass@1.69.5)(typescript@5.3.2)(vue@3.3.7)
       '@unhead/dom': registry.npmmirror.com/@unhead/dom@1.8.2
       '@unhead/ssr': registry.npmmirror.com/@unhead/ssr@1.8.2
       '@unhead/vue': registry.npmmirror.com/@unhead/vue@1.8.2(vue@3.3.7)
@@ -5391,7 +5454,7 @@ packages:
       unplugin: registry.npmmirror.com/unplugin@1.5.0
       unplugin-vue-router: registry.npmmirror.com/unplugin-vue-router@0.7.0(vue-router@4.2.5)(vue@3.3.7)
       untyped: registry.npmmirror.com/untyped@1.4.0
-      vue: registry.npmmirror.com/vue@3.3.7
+      vue: registry.npmmirror.com/vue@3.3.7(typescript@5.3.2)
       vue-bundle-renderer: registry.npmmirror.com/vue-bundle-renderer@2.0.0
       vue-devtools-stub: registry.npmmirror.com/vue-devtools-stub@0.1.0
       vue-router: registry.npmmirror.com/vue-router@4.2.5(vue@3.3.7)
@@ -7025,6 +7088,14 @@ packages:
     engines: {node: '>=14.16'}
     dev: true
 
+  registry.npmmirror.com/typescript@5.3.2:
+    resolution: {integrity: sha512-6l+RyNy7oAHDfxC4FzSJcz9vnjTKxrLpDG5M2Vu4SHRVNg6xzqZp6LYSR9zjqQTu8DU/f5xwxUdADOkbrIX2gQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/typescript/-/typescript-5.3.2.tgz}
+    name: typescript
+    version: 5.3.2
+    engines: {node: '>=14.17'}
+    hasBin: true
+    dev: true
+
   registry.npmmirror.com/ufo@1.3.1:
     resolution: {integrity: sha512-uY/99gMLIOlJPwATcMVYfqDSxUR9//AUcgZMzwfSTJPDKzA1S8mX4VLqa+fiAtveraQUBCz4FFcwVZBGbwBXIw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ufo/-/ufo-1.3.1.tgz}
     name: ufo
@@ -7344,7 +7415,7 @@ packages:
       - terser
     dev: true
 
-  registry.npmmirror.com/vite-plugin-checker@0.6.2(vite@4.5.0):
+  registry.npmmirror.com/vite-plugin-checker@0.6.2(typescript@5.3.2)(vite@4.5.0):
     resolution: {integrity: sha512-YvvvQ+IjY09BX7Ab+1pjxkELQsBd4rPhWNw8WLBeFVxu/E7O+n6VYAqNsKdK/a2luFlX/sMpoWdGFfg4HvwdJQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vite-plugin-checker/-/vite-plugin-checker-0.6.2.tgz}
     id: registry.npmmirror.com/vite-plugin-checker/0.6.2
     name: vite-plugin-checker
@@ -7391,6 +7462,7 @@ packages:
       semver: registry.npmmirror.com/semver@7.5.4
       strip-ansi: registry.npmmirror.com/strip-ansi@6.0.1
       tiny-invariant: registry.npmmirror.com/tiny-invariant@1.3.1
+      typescript: registry.npmmirror.com/typescript@5.3.2
       vite: registry.npmmirror.com/vite@4.5.0(sass@1.69.5)
       vscode-languageclient: registry.npmmirror.com/vscode-languageclient@7.0.0
       vscode-languageserver: registry.npmmirror.com/vscode-languageserver@7.0.0
@@ -7564,11 +7636,12 @@ packages:
       vue: ^3.2.0
     dependencies:
       '@vue/devtools-api': registry.npmmirror.com/@vue/devtools-api@6.5.1
-      vue: registry.npmmirror.com/vue@3.3.7
+      vue: registry.npmmirror.com/vue@3.3.7(typescript@5.3.2)
     dev: true
 
-  registry.npmmirror.com/vue@3.3.7:
+  registry.npmmirror.com/vue@3.3.7(typescript@5.3.2):
     resolution: {integrity: sha512-YEMDia1ZTv1TeBbnu6VybatmSteGOS3A3YgfINOfraCbf85wdKHzscD6HSS/vB4GAtI7sa1XPX7HcQaJ1l24zA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vue/-/vue-3.3.7.tgz}
+    id: registry.npmmirror.com/vue/3.3.7
     name: vue
     version: 3.3.7
     peerDependencies:
@@ -7582,6 +7655,7 @@ packages:
       '@vue/runtime-dom': registry.npmmirror.com/@vue/runtime-dom@3.3.7
       '@vue/server-renderer': registry.npmmirror.com/@vue/server-renderer@3.3.7(vue@3.3.7)
       '@vue/shared': registry.npmmirror.com/@vue/shared@3.3.7
+      typescript: registry.npmmirror.com/typescript@5.3.2
     dev: true
 
   registry.npmmirror.com/webidl-conversions@3.0.1:

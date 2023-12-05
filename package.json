@@ -13,7 +13,12 @@
     "@nuxt/devtools": "latest",
     "nuxt": "^3.8.0",
     "sass": "^1.69.5",
+    "typescript": "^5.3.2",
     "vue": "^3.3.7",
     "vue-router": "^4.2.5"
+  },
+  "dependencies": {
+    "diff2html": "^3.4.45",
+    "highlight.js": "^11.9.0"
   }
 }

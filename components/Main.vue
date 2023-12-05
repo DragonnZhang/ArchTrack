@@ -1,8 +1,14 @@
 <script setup lang="ts">
+const router = useRouter()
+
 const val = ref('')
 
 function search() {
-  console.log(val.value)
+  const query = {
+    repo: '11',
+    branch: '2'
+  }
+  router.push({ path: '/result', query })
 }
 </script>
 
@@ -12,7 +18,7 @@ function search() {
       <Icon />
     </div>
     <div class="search">
-      <Search v-model="val" />
+      <SearchBox v-model="val" />
     </div>
     <div class="buttons">
       <Button @click="search">Analyze Code</Button>

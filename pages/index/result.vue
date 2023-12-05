@@ -9,7 +9,11 @@ const { repo, branch } = route.query
       <h2>Commits</h2>
     </div>
     <div class="search-main-content">
-      <SearchList />
+      <SearchList
+        information="fix(compiler-sfc): avoid passing forEach index to genMap"
+        :tags="['x86', 'arm']"
+        hash="af909b7d459708f2496c417957875c2d54664704"
+      />
     </div>
   </div>
 </template>

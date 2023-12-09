@@ -8,7 +8,7 @@ defineProps<SearchResult>()
   <div class="search-list-main">
     <div class="information">
       <p class="commit-information">
-        <NuxtLink class="link" :to="`/commit/${hash}`">
+        <NuxtLink class="link" :to="`commit/${hash}`">
           {{ information }}
         </NuxtLink>
       </p>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const route = useRoute()
-const { repo, branch } = route.query
+console.log(route)
 </script>
 
 <template>

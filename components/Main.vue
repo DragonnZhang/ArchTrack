@@ -1,14 +1,18 @@
 <script setup lang="ts">
+import { parseUrl } from '~/utils/util'
 const router = useRouter()
 
 const val = ref('')
 
 function search() {
-  const query = {
-    repo: '11',
-    branch: '2'
+  const result = parseUrl(val.value)
+  if (!result) {
+    alert('Illegal input')
+    return
   }
-  router.push({ path: '/result', query })
+  const { owner, repo, branch } = result
+
+  router.push({ path: `/${owner}/${repo}/${branch}` })
 }
 </script>
 

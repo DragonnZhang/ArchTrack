@@ -1,11 +1,18 @@
-interface SearchResult {
+export interface SearchResult {
   information: string
   tags: string[]
   hash: string
+  committer: string
+  commitTime: string
+  avatar: string
 }
 
-interface CommitCode {
+export interface CommitCode {
   diffString: string
 }
 
-export type { SearchResult, CommitCode }
+export type VirtualListProps<T> = {
+  itemHeight: number
+  dataSource: T[]
+  viewHeight: number
+}

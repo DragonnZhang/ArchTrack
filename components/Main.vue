@@ -14,12 +14,16 @@ function search() {
 
   router.push({ path: `/${owner}/${repo}/${branch}` })
 }
+
+function redirect() {
+  window.open('https://github.com/DragonnZhang/ArchTrack')
+}
 </script>
 
 <template>
   <div class="container">
     <div class="icon">
-      <Icon />
+      <Icon @click="redirect" />
     </div>
     <div class="search">
       <SearchBox v-model="val" />

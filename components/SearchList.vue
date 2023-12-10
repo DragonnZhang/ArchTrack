@@ -12,6 +12,17 @@ defineProps<SearchResult>()
           {{ information }}
         </NuxtLink>
       </p>
+      <div class="meta-data">
+        <img
+          class="committer-avatar"
+          :src="avatar"
+          alt="1"
+          width="20"
+          height="20"
+        />
+        <span class="committer-name">{{ committer }}</span
+        ><span class="committer-time">&nbspcommitted {{ commitTime }}</span>
+      </div>
     </div>
     <div class="right-area">
       <div class="tags">
@@ -27,10 +38,10 @@ defineProps<SearchResult>()
 <style scoped lang="scss">
 .search-list-main {
   display: flex;
-  padding: 0.5rem 1rem;
+  padding: 0.7rem 1.2rem;
   border: 1px solid #31363c;
   border-radius: 0.375rem;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 
   &:hover {
     background-color: #171b21;
@@ -41,10 +52,41 @@ defineProps<SearchResult>()
 
     .commit-information {
       font-weight: 600;
+      margin: 0;
 
-      .link:hover {
-        color: #477fef;
-        text-decoration: underline;
+      .link {
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        display: -webkit-box;
+        line-height: 22px;
+        overflow: hidden;
+        width: 800px;
+
+        &:hover {
+          color: #477fef;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .meta-data {
+      display: flex;
+      align-items: center;
+      padding-top: 1px;
+
+      .committer-avatar {
+        border-radius: 50%;
+        margin-right: 5px;
+      }
+
+      .committer-name {
+        font-weight: 600;
+        font-size: 12px;
+      }
+
+      .committer-time {
+        font-size: 12px;
+        color: #768390;
       }
     }
   }

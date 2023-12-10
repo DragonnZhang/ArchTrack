@@ -1,6 +1,51 @@
 <script setup lang="ts">
 const route = useRoute()
-console.log(route)
+const { owner, repo } = route.params
+
+const info = await useFetch('/api/branchInfo', {
+  method: 'POST',
+  body: {
+    owner,
+    repo
+  }
+})
+
+const commitInfoArray = info.data.value as unknown as any[]
+
+const endIndex = ref(20)
+
+const bodyData = computed(() => {
+  return commitInfoArray ? commitInfoArray.slice(0, endIndex.value) : []
+})
+
+function getMoreData() {
+  endIndex.value += 5
+}
+
+function getTimeDiff(date: string): string {
+  const timeMillis = Date.parse(date)
+  const nowMillis = Date.now()
+
+  const diffMillis = nowMillis - timeMillis
+
+  const dayMillis = 24 * 60 * 60 * 1000
+  const hourMillis = 60 * 60 * 1000
+
+  let result
+
+  if (diffMillis < dayMillis) {
+    result = diffMillis / hourMillis
+    result = Math.floor(result)
+    return result + ' hours ago'
+  } else {
+    result = diffMillis / dayMillis
+    result = Math.floor(result)
+    if (result === 1) {
+      return 'yesterday'
+    }
+    return result + ' days ago'
+  }
+}
 </script>
 
 <template>
@@ -9,11 +54,23 @@ console.log(route)
       <h2>Commits</h2>
     </div>
     <div class="search-main-content">
-      <SearchList
-        information="fix(compiler-sfc): avoid passing forEach index to genMap"
-        :tags="['x86', 'arm']"
-        hash="af909b7d459708f2496c417957875c2d54664704"
-      />
+      <VirtualList
+        :dataSource="bodyData"
+        :itemHeight="80"
+        :viewHeight="1000"
+        @getMoreData="getMoreData"
+      >
+        <template #item="{ item }">
+          <SearchList
+            :information="item.commit.message"
+            :committer="item.committer.login"
+            :commitTime="getTimeDiff(item.commit.committer.date)"
+            :tags="['x86', 'arm']"
+            :hash="item.sha"
+            :avatar="item.committer.avatar_url"
+          />
+        </template>
+      </VirtualList>
     </div>
   </div>
 </template>

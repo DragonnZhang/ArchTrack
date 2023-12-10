@@ -99,6 +99,11 @@ defineProps<SearchResult>()
     .tags {
       display: flex;
     }
+
+    .hash {
+      width: 80px;
+      text-align: center;
+    }
   }
 }
 </style>

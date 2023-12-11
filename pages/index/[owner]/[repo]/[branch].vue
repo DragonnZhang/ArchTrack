@@ -10,6 +10,8 @@ const info = await useFetch('/api/branchInfo', {
   }
 })
 
+console.log(info.data.value)
+
 const commitInfoArray = ref(info.data.value as unknown as any[])
 
 const endIndex = ref(15)

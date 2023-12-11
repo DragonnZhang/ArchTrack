@@ -8,9 +8,9 @@ defineProps<SearchResult>()
   <div class="search-list-main">
     <div class="information">
       <p class="commit-information">
-        <NuxtLink class="link" :to="`commit/${hash}`">
-          <span>{{ information }}</span>
-        </NuxtLink>
+        <a class="link">
+          <NuxtLink :to="`commit/${hash}`">{{ information }}</NuxtLink>
+        </a>
       </p>
       <div class="meta-data">
         <img
@@ -62,7 +62,7 @@ defineProps<SearchResult>()
         overflow: hidden;
         width: 800px;
 
-        & span:hover {
+        & a:hover {
           color: #477fef;
           text-decoration: underline;
         }

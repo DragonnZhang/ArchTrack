@@ -70,6 +70,7 @@ watch(search, async () => {
       commit: search.value
     }
   })
+  console.log(d)
   animation.value = false
   commitInfoArray.value = [d.data.value]
 })

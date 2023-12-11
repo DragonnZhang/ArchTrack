@@ -9,7 +9,7 @@ defineProps<SearchResult>()
     <div class="information">
       <p class="commit-information">
         <NuxtLink class="link" :to="`commit/${hash}`">
-          {{ information }}
+          <span>{{ information }}</span>
         </NuxtLink>
       </p>
       <div class="meta-data">
@@ -62,7 +62,7 @@ defineProps<SearchResult>()
         overflow: hidden;
         width: 800px;
 
-        &:hover {
+        & span:hover {
           color: #477fef;
           text-decoration: underline;
         }
@@ -72,7 +72,7 @@ defineProps<SearchResult>()
     .meta-data {
       display: flex;
       align-items: center;
-      padding-top: 1px;
+      padding-top: 4px;
 
       .committer-avatar {
         border-radius: 50%;

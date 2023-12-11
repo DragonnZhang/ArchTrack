@@ -10,12 +10,14 @@ const info = await useFetch('/api/branchInfo', {
   }
 })
 
-const commitInfoArray = info.data.value as unknown as any[]
+const commitInfoArray = ref(info.data.value as unknown as any[])
 
-const endIndex = ref(20)
+const endIndex = ref(15)
 
 const bodyData = computed(() => {
-  return commitInfoArray ? commitInfoArray.slice(0, endIndex.value) : []
+  return commitInfoArray.value.length
+    ? commitInfoArray.value.slice(0, endIndex.value)
+    : []
 })
 
 function getMoreData() {
@@ -46,6 +48,31 @@ function getTimeDiff(date: string): string {
     return result + ' days ago'
   }
 }
+
+const search = ref('')
+
+const animation = ref(false)
+
+watch(search, async () => {
+  if (search.value.length === 0) {
+    commitInfoArray.value = info.data.value as unknown as any[]
+    return
+  }
+  if (search.value.length !== 40) {
+    return
+  }
+  animation.value = true
+  const d = await useFetch('/api/commitInfo', {
+    method: 'POST',
+    body: {
+      owner,
+      repo,
+      commit: search.value
+    }
+  })
+  animation.value = false
+  commitInfoArray.value = [d.data.value]
+})
 </script>
 
 <template>
@@ -53,6 +80,7 @@ function getTimeDiff(date: string): string {
     <div class="search-main-title">
       <h2>Commits</h2>
     </div>
+    <SearchCommit v-model="search" :animation="animation" />
     <div class="search-main-content">
       <VirtualList
         :dataSource="bodyData"

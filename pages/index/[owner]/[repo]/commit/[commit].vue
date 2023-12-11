@@ -2,11 +2,16 @@
 const route = useRoute()
 const { owner, repo, commit } = route.params
 
-const info = await useFetch(
-  `https://api.github.com/repos/${owner}/${repo}/commits/${commit}`
-)
+const info = await useFetch('/api/commitInfo', {
+  method: 'POST',
+  body: {
+    owner,
+    repo,
+    commit
+  }
+})
 
-const { files } = info.data.value as { files: any[] }
+const { files } = info.data.value as unknown as { files: any[] }
 
 function generateDiffString(files: any[]) {
   let s = ''

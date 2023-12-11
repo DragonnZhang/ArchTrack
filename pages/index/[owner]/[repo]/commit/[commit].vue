@@ -11,6 +11,10 @@ const info = await useFetch('/api/commitInfo', {
   }
 })
 
+if (typeof info.data.value === 'string') {
+  info.data.value = JSON.parse(info.data.value)
+}
+
 const { files } = info.data.value as unknown as { files: any[] }
 
 function generateDiffString(files: any[]) {

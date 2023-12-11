@@ -10,7 +10,9 @@ const info = await useFetch('/api/branchInfo', {
   }
 })
 
-console.log(info.data.value)
+if (typeof info.data.value === 'string') {
+  info.data.value = JSON.parse(info.data.value)
+}
 
 const commitInfoArray = ref(info.data.value as unknown as any[])
 
@@ -127,9 +129,6 @@ watch(search, async () => {
       font-size: 24px;
       font-weight: 400;
     }
-  }
-
-  &-content {
   }
 }
 </style>

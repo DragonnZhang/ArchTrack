@@ -76,6 +76,9 @@ watch(search, async () => {
 </script>
 
 <template>
+  <Head>
+    <Title>Commits · {{ owner }}/{{ repo }}</Title>
+  </Head>
   <div class="search-main">
     <div class="search-main-title">
       <h2>Commits</h2>

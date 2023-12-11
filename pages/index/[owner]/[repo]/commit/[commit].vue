@@ -23,6 +23,9 @@ const diffString = generateDiffString(files)
 </script>
 
 <template>
+  <Head>
+    <Title>{{ (info.data.value as any).commit.message }}</Title>
+  </Head>
   <div class="commit">
     <div class="commit-title">
       <h2>Commit</h2>

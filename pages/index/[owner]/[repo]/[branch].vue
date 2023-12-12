@@ -101,11 +101,11 @@ watch(search, async () => {
         <template #item="{ item }">
           <SearchList
             :information="item.commit.message"
-            :committer="item.committer.login"
+            :committer="item.committer?.login || item.commit.author.name"
             :commitTime="getTimeDiff(item.commit.committer.date)"
             :tags="['x86', 'arm']"
             :hash="item.sha"
-            :avatar="item.committer.avatar_url"
+            :avatar="item.committer?.avatar_url || ''"
           />
         </template>
       </VirtualList>

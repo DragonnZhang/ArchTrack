@@ -14,6 +14,7 @@ defineProps<SearchResult>()
       </p>
       <div class="meta-data">
         <img
+          v-show="avatar"
           class="committer-avatar"
           :src="avatar"
           alt="1"

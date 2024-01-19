@@ -16,3 +16,5 @@ export function parseUrl(url: string) {
     return null
   }
 }
+
+export function exportData() {}

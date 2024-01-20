@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const route = useRoute()
 const { owner, repo } = route.params
+const config = useRuntimeConfig()
 
 const info = await useFetch('/api/branchInfo', {
   method: 'POST',

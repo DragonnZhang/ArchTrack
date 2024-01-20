@@ -18,3 +18,24 @@ export function parseUrl(url: string) {
 }
 
 export function exportData() {}
+
+export async function loadRepo(url: string, owner: string, repo: string) {
+  const repoInfo = await useFetch(`${url}/api/load`, {
+    method: 'GET',
+    query: {
+      url: `https://github.com/${owner}/${repo}.git`
+    }
+  })
+  return repoInfo
+}
+
+export async function repoInfo(url: string, repo_id: string, with_readme = 0) {
+  const repoInfo = await useFetch(`${url}/api/load`, {
+    method: 'GET',
+    query: {
+      repo_id,
+      with_readme
+    }
+  })
+  return repoInfo
+}

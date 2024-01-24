@@ -24,18 +24,61 @@ export async function loadRepo(url: string, owner: string, repo: string) {
     method: 'GET',
     query: {
       url: `https://github.com/${owner}/${repo}.git`
-    }
+    },
+    mode: 'no-cors'
   })
   return repoInfo
 }
 
-export async function repoInfo(url: string, repo_id: string, with_readme = 0) {
-  const repoInfo = await useFetch(`${url}/api/load`, {
+export async function commitInfo(
+  url: string,
+  repo_id: string,
+  page: number,
+  per_page: number
+) {
+  const commitInfo = await useFetch(`${url}/api/commit`, {
     method: 'GET',
     query: {
       repo_id,
-      with_readme
+      page,
+      per_page
     }
   })
-  return repoInfo
+  return commitInfo
 }
+
+export function getTimeDiff(date: string): string {
+  const timeMillis = Date.parse(date)
+  const nowMillis = Date.now()
+
+  const diffMillis = nowMillis - timeMillis
+
+  const dayMillis = 24 * 60 * 60 * 1000
+  const hourMillis = 60 * 60 * 1000
+
+  let result
+
+  if (diffMillis < dayMillis) {
+    result = diffMillis / hourMillis
+    result = Math.floor(result)
+    return result + ' hours ago'
+  } else {
+    result = diffMillis / dayMillis
+    result = Math.floor(result)
+    if (result === 1) {
+      return 'yesterday'
+    }
+    return result + ' days ago'
+  }
+}
+
+// export async function repoInfo(url: string, repo_id: string) {
+//   const repoInfo = await useFetch(`${url}/api/repo`, {
+//     method: 'GET',
+//     query: {
+//       repo_id
+//     },
+//     mode: 'no-cors'
+//   })
+//   return repoInfo
+// }

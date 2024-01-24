@@ -1,7 +1,61 @@
 <script setup lang="ts">
+import { getTimeDiff } from '~/utils/util'
+
 const route = useRoute()
 const { owner, repo } = route.params
 const config = useRuntimeConfig()
+
+const repoId = ref()
+
+const archMap = ref(
+  new Map<
+    string,
+    {
+      result_nlp: string
+      result_sa: string
+    }
+  >()
+)
+
+let page = 1
+
+async function loadAndGetInfo() {
+  const repoInformation = (await loadRepo(
+    config.public.url,
+    owner as string,
+    repo as string
+  )) as any
+  const tmpData = JSON.parse(repoInformation.data.value)
+
+  if (tmpData.status === 0) {
+    repoId.value = tmpData.payload.repo
+    // 获得 commit 信息，添加到列表中
+    loadCommit(repoId.value, page, 15)
+  } else {
+    setTimeout(loadAndGetInfo, 10000)
+  }
+}
+
+loadAndGetInfo()
+
+async function loadCommit(repoId: string, page: number, per_page = 15) {
+  const commitInformation = (await commitInfo(
+    config.public.url,
+    repoId,
+    page,
+    per_page
+  )) as any
+  const commitInformationValue = JSON.parse(commitInformation.data.value)
+    .payload.commits
+  commitInformationValue.forEach(
+    (v: { hash: string; result_nlp: string; result_sa: string }) => {
+      archMap.value.set(v.hash as string, {
+        result_nlp: v.result_nlp,
+        result_sa: v.result_sa
+      })
+    }
+  )
+}
 
 const info = await useFetch('/api/branchInfo', {
   method: 'POST',
@@ -26,32 +80,9 @@ const bodyData = computed(() => {
 })
 
 function getMoreData() {
-  endIndex.value += 5
-}
-
-function getTimeDiff(date: string): string {
-  const timeMillis = Date.parse(date)
-  const nowMillis = Date.now()
-
-  const diffMillis = nowMillis - timeMillis
-
-  const dayMillis = 24 * 60 * 60 * 1000
-  const hourMillis = 60 * 60 * 1000
-
-  let result
-
-  if (diffMillis < dayMillis) {
-    result = diffMillis / hourMillis
-    result = Math.floor(result)
-    return result + ' hours ago'
-  } else {
-    result = diffMillis / dayMillis
-    result = Math.floor(result)
-    if (result === 1) {
-      return 'yesterday'
-    }
-    return result + ' days ago'
-  }
+  endIndex.value += 15
+  page++
+  loadCommit(repoId.value, page, 15)
 }
 
 const search = ref('')
@@ -104,7 +135,7 @@ watch(search, async () => {
             :information="item.commit.message"
             :committer="item.committer?.login || item.commit.author.name"
             :commitTime="getTimeDiff(item.commit.committer.date)"
-            :tags="['x86', 'arm']"
+            :tags="[archMap.get(item.sha)?.result_sa as unknown as string]"
             :hash="item.sha"
             :avatar="item.committer?.avatar_url || ''"
           />

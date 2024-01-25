@@ -35,8 +35,6 @@ async function exportData() {
   XLSX.writeFile(wb, `${owner}-${repo}-analyze-result.xlsx`)
 }
 
-let page = 1
-
 async function loadAndGetInfo() {
   const repoInformation = (await loadRepo(
     config.public.url,
@@ -44,8 +42,6 @@ async function loadAndGetInfo() {
     repo as string
   )) as any
   const tmpData = JSON.parse(repoInformation.data.value)
-
-  debugger
 
   if (tmpData.status === 0) {
     repoId.value = tmpData.payload.repo
@@ -59,7 +55,6 @@ async function loadAndGetInfo() {
 }
 
 try {
-  debugger
   await loadAndGetInfo()
 } catch (err) {}
 
@@ -113,12 +108,11 @@ const bodyData = computed(() => {
 
 async function getMoreData() {
   endIndex.value += 15
-  page++
 }
 
 watchEffect(() => {
   if (repoId.value) {
-    loadCommit(repoId.value, page, 15)
+    loadCommit(repoId.value, 2, 15)
   }
 })
 

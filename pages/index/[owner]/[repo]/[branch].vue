@@ -30,7 +30,6 @@ async function exportData() {
   const ws = XLSX.utils.json_to_sheet(
     JSON.parse(commitInformationValue).payload.commits
   )
-  console.log(ws)
   const wb = XLSX.utils.book_new()
   XLSX.utils.book_append_sheet(wb, ws, 'Sheet1')
   XLSX.writeFile(wb, `${owner}-${repo}-analyze-result.xlsx`)
@@ -46,11 +45,13 @@ async function loadAndGetInfo() {
   )) as any
   const tmpData = JSON.parse(repoInformation.data.value)
 
+  debugger
+
   if (tmpData.status === 0) {
     repoId.value = tmpData.payload.repo
     // 获得 commit 信息，添加到列表中
     try {
-      await loadCommit(repoId.value, page, 15)
+      await loadCommit(repoId.value, 1, 15)
     } catch (err) {}
   } else {
     // setTimeout(loadAndGetInfo, 10000)
@@ -58,10 +59,12 @@ async function loadAndGetInfo() {
 }
 
 try {
+  debugger
   await loadAndGetInfo()
 } catch (err) {}
 
 async function loadCommit(repoId: string, page: number, per_page = 15) {
+  debugger
   const commitInformation = (await commitInfo(
     config.public.url,
     repoId,
@@ -78,6 +81,12 @@ async function loadCommit(repoId: string, page: number, per_page = 15) {
       })
     }
   )
+}
+
+function returnTags(item: any) {
+  return archMap.value.get(item.sha)?.result_sa
+    ? (archMap.value.get(item.sha)?.result_sa.split(';') as unknown as string[])
+    : ['']
 }
 
 const info = await useFetch('/api/branchInfo', {
@@ -102,11 +111,16 @@ const bodyData = computed(() => {
     : []
 })
 
-function getMoreData() {
+async function getMoreData() {
   endIndex.value += 15
   page++
-  loadCommit(repoId.value, page, 15)
 }
+
+watchEffect(() => {
+  if (repoId.value) {
+    loadCommit(repoId.value, page, 15)
+  }
+})
 
 const search = ref('')
 
@@ -179,7 +193,7 @@ watch(search, async () => {
             :information="item.commit.message"
             :committer="item.committer?.login || item.commit.author.name"
             :commitTime="getTimeDiff(item.commit.committer.date)"
-            :tags="archMap.get(item.sha)?.result_sa ? archMap.get(item.sha)?.result_sa.split(';') as unknown as string[] : ['']"
+            :tags="returnTags(item)"
             :hash="item.sha"
             :avatar="item.committer?.avatar_url || ''"
           />

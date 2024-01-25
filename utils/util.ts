@@ -22,8 +22,7 @@ export async function loadRepo(url: string, owner: string, repo: string) {
     method: 'GET',
     query: {
       url: `https://github.com/${owner}/${repo}.git`
-    },
-    mode: 'no-cors'
+    }
   })
   return repoInfo
 }

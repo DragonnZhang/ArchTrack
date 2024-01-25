@@ -23,7 +23,7 @@ async function exportData() {
     config.public.url,
     repoId.value,
     1,
-    30
+    60
   )) as any
   const commitInformationValue = commitInformation.data.value
 

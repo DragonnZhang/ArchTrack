@@ -17,8 +17,6 @@ export function parseUrl(url: string) {
   }
 }
 
-export function exportData() {}
-
 export async function loadRepo(url: string, owner: string, repo: string) {
   const repoInfo = await useFetch(`${url}/api/load`, {
     method: 'GET',

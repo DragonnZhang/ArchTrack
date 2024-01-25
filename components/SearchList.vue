@@ -27,7 +27,9 @@ defineProps<SearchResult>()
     </div>
     <div class="right-area">
       <div class="tags">
-        <SearchListTag v-for="tag in tags" :key="tag">{{ tag }}</SearchListTag>
+        <SearchListTag v-if="tags[0]" v-for="tag in tags" :key="tag">{{
+          tag
+        }}</SearchListTag>
       </div>
       <div class="hash">
         <SearchListHash>{{ hash.slice(0, 7) }}</SearchListHash>

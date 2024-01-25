@@ -11,7 +11,7 @@ defineEmits(['update:modelValue'])
       <div class="search-icon"></div>
       <input
         class="input_area"
-        placeholder="Analyze code ( e.g. https://github.com/torvalds/linux.git[master] )"
+        placeholder="e.g. https://github.com/hribz/ArchReviewerBenchmark.git[main]"
         type="text"
         :value="modelValue"
         @input="

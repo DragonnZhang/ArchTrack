@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "diff2html": "^3.4.45",
-    "highlight.js": "^11.9.0"
+    "highlight.js": "^11.9.0",
+    "xlsx": "^0.18.5"
   }
 }

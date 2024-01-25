@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { getTimeDiff } from '~/utils/util'
+import * as XLSX from 'xlsx'
 
 const route = useRoute()
 const { owner, repo } = route.params
@@ -16,6 +17,24 @@ const archMap = ref(
     }
   >()
 )
+
+async function exportData() {
+  const commitInformation = (await commitInfo(
+    config.public.url,
+    repoId.value,
+    1,
+    30
+  )) as any
+  const commitInformationValue = commitInformation.data.value
+
+  const ws = XLSX.utils.json_to_sheet(
+    JSON.parse(commitInformationValue).payload.commits
+  )
+  console.log(ws)
+  const wb = XLSX.utils.book_new()
+  XLSX.utils.book_append_sheet(wb, ws, 'Sheet1')
+  XLSX.writeFile(wb, `123.xlsx`)
+}
 
 let page = 1
 
@@ -122,7 +141,28 @@ watch(search, async () => {
     <div class="search-main-title">
       <h2>Commits</h2>
     </div>
-    <SearchCommit v-model="search" :animation="animation" />
+    <div class="head-container">
+      <button @click="exportData" class="export-button">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="h-4 w-4"
+        >
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" x2="12" y1="15" y2="3"></line>
+        </svg>
+        Extract
+      </button>
+      <SearchCommit v-model="search" :animation="animation" />
+    </div>
     <div class="search-main-content">
       <VirtualList
         :dataSource="bodyData"
@@ -135,7 +175,7 @@ watch(search, async () => {
             :information="item.commit.message"
             :committer="item.committer?.login || item.commit.author.name"
             :commitTime="getTimeDiff(item.commit.committer.date)"
-            :tags="[archMap.get(item.sha)?.result_sa as unknown as string]"
+            :tags="archMap.get(item.sha)?.result_sa ? archMap.get(item.sha)?.result_sa.split(';') as unknown as string[] : ['']"
             :hash="item.sha"
             :avatar="item.committer?.avatar_url || ''"
           />
@@ -146,6 +186,35 @@ watch(search, async () => {
 </template>
 
 <style scoped lang="scss">
+.export-button {
+  &:hover {
+    background-color: rgb(22 163 74);
+  }
+
+  display: flex;
+  background-color: #22262c;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.375);
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100px;
+  height: 30px;
+
+  svg {
+    width: 12px;
+    height: 12px;
+    padding-right: 0.5rem;
+  }
+}
+
+.head-container {
+  display: flex;
+  justify-content: space-between;
+}
+
 .search-main {
   max-width: 1280px;
   margin-top: 50px;

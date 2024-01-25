@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { exportData } from '~/utils/util'
-
 const route = useRoute()
 const { owner, repo, commit } = route.params
 
@@ -40,25 +38,6 @@ const diffString = generateDiffString(files)
   <div class="commit">
     <div class="commit-title">
       <h2>Commit</h2>
-      <button @click="exportData" class="export-button">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="h-4 w-4"
-        >
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-          <polyline points="7 10 12 15 17 10"></polyline>
-          <line x1="12" x2="12" y1="15" y2="3"></line>
-        </svg>
-        Extract
-      </button>
     </div>
     <CommitCode :diffString="diffString" />
   </div>
@@ -81,28 +60,6 @@ const diffString = generateDiffString(files)
     h2 {
       font-size: 24px;
       font-weight: 400;
-    }
-
-    .export-button {
-      &:hover {
-        background-color: rgb(22 163 74);
-      }
-
-      display: flex;
-      background-color: rgb(34 197 94);
-      color: white;
-      border: none;
-      border-radius: 4px;
-      padding: 0.5rem 1rem;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.2s ease;
-
-      svg {
-        width: 12px;
-        height: 12px;
-        padding-right: 0.5rem;
-      }
     }
   }
 }

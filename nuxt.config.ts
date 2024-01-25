@@ -6,8 +6,8 @@ export default defineNuxtConfig({
       url:
         process.env.NODE_ENV === 'development'
           ? // ? 'http://127.0.0.1:12888'
-            'http://47.94.210.196:12888'
-          : 'http://47.94.210.196:12888'
+            'http://47.94.210.196:22222'
+          : 'http://47.94.210.196:22222'
     }
   }
 })

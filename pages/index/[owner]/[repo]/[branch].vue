@@ -50,17 +50,15 @@ async function loadAndGetInfo() {
     repoId.value = tmpData.payload.repo
     // 获得 commit 信息，添加到列表中
     try {
-      loadCommit(repoId.value, page, 15)
-    } catch (err) {
-      console.log(1)
-    }
+      await loadCommit(repoId.value, page, 15)
+    } catch (err) {}
   } else {
     // setTimeout(loadAndGetInfo, 10000)
   }
 }
 
 try {
-  loadAndGetInfo()
+  await loadAndGetInfo()
 } catch (err) {}
 
 async function loadCommit(repoId: string, page: number, per_page = 15) {

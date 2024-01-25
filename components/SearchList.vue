@@ -63,7 +63,7 @@ defineProps<SearchResult>()
         display: -webkit-box;
         line-height: 22px;
         overflow: hidden;
-        width: 800px;
+        width: 700px;
 
         & a:hover {
           color: #477fef;

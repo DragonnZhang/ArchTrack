@@ -23,7 +23,7 @@ async function exportData() {
     config.public.url,
     repoId.value,
     1,
-    60
+    50
   )) as any
   const commitInformationValue = commitInformation.data.value
 
@@ -59,7 +59,6 @@ try {
 } catch (err) {}
 
 async function loadCommit(repoId: string, page: number, per_page = 15) {
-  debugger
   const commitInformation = (await commitInfo(
     config.public.url,
     repoId,

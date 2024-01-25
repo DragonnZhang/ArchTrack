@@ -34,15 +34,17 @@ export async function commitInfo(
   page: number,
   per_page: number
 ) {
-  const commitInfo = await useFetch(`${url}/api/commit`, {
-    method: 'GET',
-    query: {
-      repo_id,
-      page,
-      per_page
-    }
-  })
-  return commitInfo
+  try {
+    const commitInfo = await useFetch(`${url}/api/commit`, {
+      method: 'GET',
+      query: {
+        repo_id,
+        page,
+        per_page
+      }
+    })
+    return commitInfo
+  } catch (err) {}
 }
 
 export function getTimeDiff(date: string): string {

@@ -33,7 +33,7 @@ async function exportData() {
   console.log(ws)
   const wb = XLSX.utils.book_new()
   XLSX.utils.book_append_sheet(wb, ws, 'Sheet1')
-  XLSX.writeFile(wb, `123.xlsx`)
+  XLSX.writeFile(wb, `${owner}-${repo}-analyze-result.xlsx`)
 }
 
 let page = 1
@@ -49,13 +49,19 @@ async function loadAndGetInfo() {
   if (tmpData.status === 0) {
     repoId.value = tmpData.payload.repo
     // 获得 commit 信息，添加到列表中
-    loadCommit(repoId.value, page, 15)
+    try {
+      loadCommit(repoId.value, page, 15)
+    } catch (err) {
+      console.log(1)
+    }
   } else {
-    setTimeout(loadAndGetInfo, 10000)
+    // setTimeout(loadAndGetInfo, 10000)
   }
 }
 
-loadAndGetInfo()
+try {
+  loadAndGetInfo()
+} catch (err) {}
 
 async function loadCommit(repoId: string, page: number, per_page = 15) {
   const commitInformation = (await commitInfo(

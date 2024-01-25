@@ -2,7 +2,7 @@
 import { parseUrl } from '~/utils/util'
 const router = useRouter()
 
-const val = ref('')
+const val = ref('https://github.com/hribz/ArchReviewerBenchmark.git')
 
 function search() {
   const result = parseUrl(val.value)
